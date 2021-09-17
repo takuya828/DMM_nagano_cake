@@ -1,0 +1,9 @@
+<h4>商品一覧</h4>
+<h3>テスト</h3>
+
+<% @items.each do |item| %>
+  <h5><%= item.id %></h5>
+  <h4><%= item.name %></h4>
+  <h4><%= item.price %></h4>
+  <h4><%= item.genre %></h4>
+<% end %>
