@@ -1,1 +1,11 @@
+<%= flash[:danger] %>
+<%= flash[:success] %>
+
 <h4>商品詳細</h4>
+<%= attachment_image_tag(@item, :image, :fill, 60, 60, format: 'jpeg', fallback: "no_image.jpg") %>
+<p>商品名 <%= @item.name %></p>
+<p>商品説明 <%= @item.introduction %></p>
+<p>ジャンル <%= @item.genre.name %></p>
+<p>税抜価格 <%= @item.price %></p>
+
+<%= link_to "編集する", edit_admin_item_path(@item.id) %>

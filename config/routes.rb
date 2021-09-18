@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
+  # get 'customers/show'
+  # resources :customers, only: [:show]
   # devise_for :customers
   # devise_for :admins
+
+  get '/customers/mypage', to: 'customers#show'
 
   devise_for :admins, controllers: {
     sessions:      'admins/sessions',
@@ -14,6 +18,7 @@ Rails.application.routes.draw do
   }
 
   root to: 'homes#top'
+  get 'home/about' => 'homes#about', as:'about'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   namespace :admin do
      resources :genres, only: [:new, :index, :create, :edit, :update]

@@ -25,14 +25,24 @@ class Admin::ItemsController < ApplicationController
   end
 
   def edit
+    @item = Item.find(params[:id])
   end
 
   def update
+    @item = Item.find(params[:id])
+    if @item.update(item_params)
+       flash[:success] = "You have updated item successfully."
+       redirect_to admin_item_path
+    else
+      @item = Item.find(params[:id])
+      flash[:danger] = "error"
+      redirect_to admin_item_path
+    end
   end
 
    private
   def item_params
-    params.require(:item).permit(:id, :genre_id, :name, :image_id, :introduction, :price)
+    params.require(:item).permit(:id, :genre_id, :name, :image, :introduction, :price)
   end
 
 end
