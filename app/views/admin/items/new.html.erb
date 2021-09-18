@@ -1,7 +1,9 @@
+<%= flash[:danger] %>
+<%= flash[:success] %>
+
 <h1>商品新規登録</h1>
 
 <%= form_with model: [:admin, @item], local:true do |f| %>
-  <h4>商品画像</h4><%= f.attachment_field :image %>
   <h4>商品名</h4>  <%= f.text_field :name %>
   <h4>商品説明</h4>  <%= f.text_area :introduction %><br><br>
   <%= f.label :ジャンル %>

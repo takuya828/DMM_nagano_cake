@@ -10,8 +10,14 @@ class Admin::ItemsController < ApplicationController
 
   def create
     @item = Item.new(item_params)
-    @item.save
-    redirect_to new_admin_item_path
+    if @item.save
+      flash[:success] = "You have created item successfully."
+      redirect_to new_admin_item_path
+    else
+      @item = Item.new(item_params)
+      flash[:danger] = "error"
+      redirect_to new_admin_item_path
+    end
   end
 
   def show
