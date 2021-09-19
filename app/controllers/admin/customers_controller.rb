@@ -4,6 +4,7 @@ class Admin::CustomersController < ApplicationController
   end
   
   def show
+    @customer = 
   end
   
   def edit
