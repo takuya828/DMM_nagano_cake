@@ -1,1 +1,9 @@
 <h4>会員一覧</h4>
+
+<% @customers.each do |customer| %>
+  会員ID<span><%= customer.id %></span>
+  氏名<span><%= link_to customer.first_name, admin_customer_path(customer) %><%= link_to customer.last_name, admin_customer_path(customer) %></span>
+  メールアドレス<span><%= customer.email %></span>
+  顧客ステータス<br>
+
+ <% end %>

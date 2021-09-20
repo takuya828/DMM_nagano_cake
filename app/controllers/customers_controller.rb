@@ -5,6 +5,20 @@ def show
  @customer = current_customer
 end
 
+ def edit
+  @customer = Customer.find(params[:id])
+ end
+
+ def update
+ @customer = current_customer
+ if @customer.update(customer_params)
+       flash[:success] = "You have updated info successfully."
+       redirect_to  customers_mypage_path(@customer.id)
+ else
+       flash[:danger] = "error"
+       redirect_to customers_mypage_path(@customer.id)
+    end
+end
 
 private
 

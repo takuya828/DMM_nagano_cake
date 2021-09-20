@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   # devise_for :admins
 
   get '/customers/mypage', to: 'customers#show'
+  resources :customers, only: [:edit, :update]
 
   devise_for :admins, controllers: {
     sessions:      'admins/sessions',
@@ -23,6 +24,7 @@ Rails.application.routes.draw do
   namespace :admin do
      resources :genres, only: [:new, :index, :create, :edit, :update]
      resources :items
+     resources :customers
   end
 
 end
