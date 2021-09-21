@@ -14,7 +14,6 @@ end
  end
 
  def quit
-  binding.pry
   @customer = Customer.find(params[:id])
   @customer.update(is_active: false)
   reset_session
