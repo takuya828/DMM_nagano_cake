@@ -9,6 +9,20 @@ end
   @customer = Customer.find(params[:id])
  end
 
+ def check
+  @customer = current_customer
+ end
+
+ def quit
+  binding.pry
+  @customer = Customer.find(params[:id])
+  @customer.update(is_active: false)
+  reset_session
+  flash[:notice] = "退会処理を完了致しました。"
+  redirect_to root_path
+ end
+
+
  def update
  @customer = current_customer
  if @customer.update(customer_params)
@@ -17,12 +31,12 @@ end
  else
        flash[:danger] = "error"
        redirect_to customers_mypage_path(@customer.id)
-    end
-end
+ end
+ end
 
 private
 
    def customer_params
-    params.require(:customer).permit(:last_name, :first_name, :last_name_kana, :first_name_kana, :postal_code, :address, :telephone_number)
+    params.require(:customer).permit(:last_name, :first_name, :last_name_kana, :first_name_kana, :postal_code, :address, :telephone_number, :is_active)
    end
 end

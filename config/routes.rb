@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   # devise_for :admins
 
   get '/customers/mypage', to: 'customers#show'
+  get '/customers/check', to: 'customers#check'
+  patch '/customers/:id/quit' => 'customers#quit', as: 'quit'
   resources :customers, only: [:edit, :update]
 
   devise_for :admins, controllers: {
