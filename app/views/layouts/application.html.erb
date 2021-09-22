@@ -31,16 +31,16 @@
         <%= link_to "会員ログイン", new_customer_session_path %>
       </li>
       <li>
-        <%= link_to "商品新規登録", new_admin_item_path %>
+        <%= link_to "(管理)商品新規登録", new_admin_item_path %>
       </li>
       <li>
-        <%= link_to "商品一覧",  admin_items_path %>
+        <%= link_to "(管理)商品一覧",  admin_items_path %>
       </li>
       <li>
-        <%= link_to "ジャンル一覧",  admin_genres_path %>
+        <%= link_to "(管理)ジャンル一覧",  admin_genres_path %>
       </li>
       <li>
-       <%= link_to "会員一覧", admin_customers_path %>
+       <%= link_to "(管理)会員一覧", admin_customers_path %>
       </li>
       <li>
        <%= link_to "About", about_path %>
@@ -54,6 +54,9 @@
       </li>
       <li>
        <%= link_to "配送先一覧", addresses_path %>
+      </li>
+      <li>
+       <%= link_to "(会員)商品一覧", items_path %>
       </li>
       <li>
 

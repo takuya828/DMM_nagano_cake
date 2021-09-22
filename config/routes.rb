@@ -8,7 +8,9 @@ Rails.application.routes.draw do
   get '/customers/check', to: 'customers#check'
   patch '/customers/:id/quit' => 'customers#quit', as: 'quit'
   resources :customers, only: [:edit, :update]
-  resources :addresses, only: [:index, :edit, :new, :create, :update, :destroy, :update, :destroy]
+  resources :addresses, only: [:index, :edit, :new, :create, :update, :destroy, :update]
+  delete '/addresses/:id/delete' => 'addresses#delete', as:'address_delete'
+  resources :items, only: [:index, :show]
 
   devise_for :admins, controllers: {
     sessions:      'admins/sessions',

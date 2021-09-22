@@ -1,3 +1,5 @@
+<%= flash[:danger] %>
+<%= flash[:success] %>
 <h1>配送先登録/一覧</h1>
 
 <%= form_with model:@address, local:true do |f| %>
@@ -15,6 +17,6 @@
 <p>郵便番号　<%= address.postal_code %></p>
 <p>住所　<%= address.address %></p>
 <p>宛名　<%= address.name %></p>
-編集する　　削除する<br><br>
+<%= link_to '編集する', edit_address_path(@address, id: address) %>　　<%= link_to "削除する", address_delete_path(@address, id: address), method: :delete, data: {confirm: "削除しますか？"}  %>
 
 <% end %>

@@ -1,0 +1,6 @@
+<%= attachment_image_tag(@item, :image, :fill, 120, 120, format: 'jpeg', fallback: "no_image.jpg") %>
+<h2> <%= @item.name %></h2>
+<p2> <%= @item.introduction %></p2><br>
+<p2><strong>¥<%= @item.add_tax_price.to_s(:dalimited) %></strong>(税込)</p2>
+
+<p>個数選択　　　カートに入れる</p>

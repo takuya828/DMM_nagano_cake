@@ -19,12 +19,25 @@ class AddressesController < ApplicationController
   end
 
   def update
+    @address = Address.find(params[:id])
+    if @address.update(address_params)
+       flash[:success] = "You have updated address successfully."
+       redirect_to addresses_path
+    else
+      @address = Address.find(params[:id])
+      flash[:danger] = "error"
+      redirect_to addresses_path
+    end
   end
 
   def edit
+    @address = Address.find(params[:id])
   end
 
-  def destroy
+  def delete
+    @address = Address.find(params[:id])
+    @address.delete
+    redirect_to addresses_path
   end
 
   private
