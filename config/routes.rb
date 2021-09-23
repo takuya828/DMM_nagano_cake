@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   resources :addresses, only: [:index, :edit, :new, :create, :update, :destroy, :update]
   delete '/addresses/:id/delete' => 'addresses#delete', as:'address_delete'
   resources :items, only: [:index, :show]
+  resources :cart_items, only: [:index, :update, :destroy, :create, :new]
 
   devise_for :admins, controllers: {
     sessions:      'admins/sessions',

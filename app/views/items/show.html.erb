@@ -3,4 +3,9 @@
 <p2> <%= @item.introduction %></p2><br>
 <p2><strong>¥<%= @item.add_tax_price.to_s(:dalimited) %></strong>(税込)</p2>
 
-<p>個数選択　　　カートに入れる</p>
+<%= form_with model:@cart_item, url: cart_items_path, local:true do |f| %>
+<p><%= f.select :amount, *[1..20] %></p>
+<%= f.hidden_field :item_id, value: @item_id %>
+<p><%= f.submit 'カートに入れる' %></p>
+
+<% end %>
