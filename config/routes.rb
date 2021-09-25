@@ -10,8 +10,14 @@ Rails.application.routes.draw do
   resources :customers, only: [:edit, :update]
   resources :addresses, only: [:index, :edit, :new, :create, :update, :destroy, :update]
   delete '/addresses/:id/delete' => 'addresses#delete', as:'address_delete'
-  resources :items, only: [:index, :show]
-  resources :cart_items, only: [:index, :update, :destroy, :create, :new]
+  resources :items, only: [:index, :show, :create]
+  resources :cart_items do
+    collection do
+    delete 'destroy_all'
+  end
+  end
+  resources :orders, only: [:new, :create, :index, :show]
+
 
   devise_for :admins, controllers: {
     sessions:      'admins/sessions',
