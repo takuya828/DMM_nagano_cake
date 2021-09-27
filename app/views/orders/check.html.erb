@@ -1,1 +1,21 @@
 <h1>注文情報確認</h1>
+
+
+<% @cart_items.each do |cart_item| %>
+<%= attachment_image_tag(cart_item.item, :image, :fill, 50, 50, format: 'jpeg', fallback: "no_image.jpg") %>
+<p>商品名　<%= cart_item.item.name %></p>
+<p>単価　<%= cart_item.item.add_tax_price.to_s(:delimited) %>　</p>
+<p>数量　<%= cart_item.amount %></p>
+<p>小計  <%= (cart_item.item.price * 1.1).floor * cart_item.amount %></p><br><br>
+ <% end %>
+
+
+<h4>送料　<%= @postage %></h4>
+<h3>商品合計　<%= @total.round.to_s(:delimited) %></h3>
+<h2>請求金額 <%= (@total + @postage).to_s(:delimited) %></h2>
+
+<h4>支払い方法 <%= @order.payment_type_i18n %></h4>
+<h4>お届け先 <%= @address %></h4>
+
+
+<h5>注文を確定する</h5>
