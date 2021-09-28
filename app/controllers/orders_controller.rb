@@ -25,6 +25,9 @@ class OrdersController < ApplicationController
     @order = Order.new
   end
 
+  def thanks
+  end
+
   def order_params
     params.require(:order).permit(:postal_code, :address, :name, :payment_type, :price, :postage, :order_status, :customer_id)
   end

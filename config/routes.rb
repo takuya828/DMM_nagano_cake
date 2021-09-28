@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   end
   resources :orders, only: [:new, :create, :index, :show]
   post '/orders/check', to: 'orders#check'
+  get '/orders/thanks', to: 'orders#thanks'
 
 
   devise_for :admins, controllers: {
