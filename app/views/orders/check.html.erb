@@ -14,12 +14,18 @@
 <h2>請求金額 <%= (@total + @postage).to_s(:delimited) %></h2>
 
 <h4>支払い方法 <%= @order.payment_type_i18n %></h4>
-<h4>お届け先 <%= @address %></h4>
+<h4>お届け先 〒<%= @order.postal_code %>　<%= @order.address %><br>
+<%= @order.name %></h4>
 
-<%= form_with model:@order_items, url: orders_thanks_path, local:true do |f| %>
-<%= f.hidden_field :order_id, value: @order %>
+<%= form_with model:@order, url: orders_path, local:true do |f| %>
+<%= f.hidden_field :order_id %>
+<%= f.hidden_field :item_id %>
+<%= f.hidden_field :price %>
+<%= f.hidden_field :postal_code %>
+<%= f.hidden_field :address %>
+<%= f.hidden_field :name %>
+
+
+<%= f.submit '注文を確定する' %>
 
 <% end %>
-
-
-<h5>注文を確定する</h5>

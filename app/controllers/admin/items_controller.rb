@@ -22,7 +22,6 @@ class Admin::ItemsController < ApplicationController
 
   def show
     @item = Item.find(params[:id])
-    @cart_item = Cart_item
   end
 
   def edit

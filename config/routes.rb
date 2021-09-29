@@ -16,9 +16,12 @@ Rails.application.routes.draw do
     delete 'destroy_all'
   end
   end
-  resources :orders, only: [:new, :create, :index, :show]
-  post '/orders/check', to: 'orders#check'
-  get '/orders/thanks', to: 'orders#thanks'
+  resources :orders, only: [:new, :create, :index, :show] do
+    collection do
+      get 'thanks'
+      post 'check'
+    end
+  end
 
 
   devise_for :admins, controllers: {
