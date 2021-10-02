@@ -1,10 +1,15 @@
 class OrdersController < ApplicationController
 
   def show
+    @order = Order.find(params[:id])
+    @order_items = @order.order_items
+    @postage = 800
+    @total = @order_items.sum(:unit_price)
   end
 
   def index
     @orders = current_customer.orders.all
+    @postage = 800
   end
 
   def check
@@ -27,8 +32,13 @@ class OrdersController < ApplicationController
     @cart_items = current_customer.cart_items.all
     @cart_item = CartItem
     @total = @cart_items.inject(0) { |sum, item| sum + item.sum_of_price }
-    @postage = 500
+    @postage = 800
     @order.price = @total
+  end
+
+  def destroy_all
+    @cart_items = CartItem.all
+    current_customer.cart_items.destroy_all
   end
 
   def new
@@ -41,6 +51,16 @@ class OrdersController < ApplicationController
   def create
     @order = current_customer.orders.new(order_params)
     @order.save
+    @cart_items = current_customer.cart_items
+    @cart_items.each do |cart_item|
+    OrderItem.create(
+      order_id: @order.id,
+      item_id: cart_item.item_id,
+      amount: cart_item.amount,
+      unit_price: cart_item.item.price,
+      )
+     end
+     @cart_items.destroy_all
       redirect_to thanks_orders_path
   end
 
@@ -48,8 +68,13 @@ class OrdersController < ApplicationController
   def thanks
   end
 
+
+   private
   def order_params
     params.require(:order).permit(:postal_code, :address, :name, :payment_type, :price)
   end
 
+  def order_item_params
+    params.require(:order_item).permit(:amount, :unit_price)
+  end
 end

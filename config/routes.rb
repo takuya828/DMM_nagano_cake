@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   # devise_for :customers
   # devise_for :admins
 
+  get '/' => 'homes#top', as: 'root'
+  get '/admin', to:'admin/homes#top'
   get '/customers/mypage', to: 'customers#show'
   get '/customers/check', to: 'customers#check'
   patch '/customers/:id/quit' => 'customers#quit', as: 'quit'
@@ -35,13 +37,13 @@ Rails.application.routes.draw do
     registrations: 'customers/registrations'
   }
 
-  root to: 'homes#top'
   get 'home/about' => 'homes#about', as:'about'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   namespace :admin do
      resources :genres, only: [:new, :index, :create, :edit, :update]
      resources :items
      resources :customers
+     resources :orders
   end
 
 end

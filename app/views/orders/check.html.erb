@@ -6,7 +6,7 @@
 <p>商品名　<%= cart_item.item.name %></p>
 <p>単価　<%= cart_item.item.add_tax_price.to_s(:delimited) %>　</p>
 <p>数量　<%= cart_item.amount %></p>
-<p>小計  <%= (cart_item.item.price * 1.1).floor * cart_item.amount %></p><br><br>
+<p>小計  <%= ((cart_item.item.price * 1.1).floor * cart_item.amount).to_s(:delimited) %></p><br><br>
  <% end %>
 
 <h4>送料　<%= @postage %></h4>
@@ -24,6 +24,7 @@
 <%= f.hidden_field :postal_code %>
 <%= f.hidden_field :address %>
 <%= f.hidden_field :name %>
+<%= f.hidden_field :payment_type %>
 
 
 <%= f.submit '注文を確定する' %>
