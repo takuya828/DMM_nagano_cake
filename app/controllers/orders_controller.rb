@@ -75,6 +75,6 @@ class OrdersController < ApplicationController
   end
 
   def order_item_params
-    params.require(:order_item).permit(:amount, :unit_price)
+    params.require(:order_item).permit(:amount, :unit_price, :order_id, :item_id)
   end
 end

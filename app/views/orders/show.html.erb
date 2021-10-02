@@ -13,7 +13,7 @@
 <% end %>
 
 <h3>請求情報</h3>
-<p>商品合計<%= ((@total * 1.1).floor).to_s(:delimited) %><br>
+<p>商品合計<%= @order.price.to_s(:delimited) %><br>
 
 <p>配送料<%= @postage %><br>
-<p>ご請求額<%= ((@total * 1.1).floor + @postage).to_s(:delimited)  %>
+<p>ご請求額<%= (@order.price + @postage).to_s(:delimited) %>
