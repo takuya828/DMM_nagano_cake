@@ -17,15 +17,19 @@ class Admin::CustomersController < ApplicationController
      if @customer.update(customer_params)
        flash[:success] = "You have updated info successfully."
        redirect_to  admin_customer_path(@customer.id)
+     if @customer.update(is_active:false)
+       flash[:success] = "You have updated info successfully."
+       redirect_to  admin_customer_path(@customer.id)
      else
        flash[:danger] = "error"
        redirect_to admin_customer_path(@customer.id)
-    end
-   end
+     end
+     end
+  end
 
 private
 
    def customer_params
-    params.require(:customer).permit(:last_name, :first_name, :last_name_kana, :first_name_kana, :postal_code, :address, :telephone_number)
+    params.require(:customer).permit(:last_name, :first_name, :last_name_kana, :first_name_kana, :postal_code, :address, :telephone_number, :is_active)
    end
 end

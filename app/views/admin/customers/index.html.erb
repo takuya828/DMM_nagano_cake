@@ -2,8 +2,8 @@
 
 <% @customers.each do |customer| %>
   会員ID<span><%= customer.id %></span>
-  氏名<span><%= link_to customer.first_name, admin_customer_path(customer) %><%= link_to customer.last_name, admin_customer_path(customer) %></span>
+  氏名<span><%= link_to (customer.first_name + customer.last_name), admin_customer_path(customer) %></span>
   メールアドレス<span><%= customer.email %></span>
-  顧客ステータス<br>
+  顧客ステータス<span><%= customer.is_active_i18n %></span><br>
 
  <% end %>

@@ -11,70 +11,76 @@
   <header>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container-fluid">
-      <div class="navbar-nav my-3">
-         <%= link_to "TOP", root_path %><br>
+        <ul class="navbar-nav my-3 mr-auto">
+          <li>
+            <div class="mx-1">
+         <%= link_to "NaganoCake", root_path %>
+            </div>
+          </li>
+        </ul>
          <% if admin_signed_in? %>
+         <div class="mx-3">
+          <%= link_to "商品一覧",  admin_items_path %>
+         </div>
+          <div class="mx-3">
+          <%= link_to "会員一覧", admin_customers_path %>
+         </div>
+         <div class="mx-3">
+          <%= link_to "注文履歴一覧", admin_path %>
+         </div>
+         <div class="mx-3">
+          <%= link_to "ジャンル一覧",  admin_genres_path %>
+         </div>
+         <div class="mx-3">
          <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
-         <div class="mx-1">
-           <%= link_to "管理者新規登録",  new_admin_registration_path %>
-         </div>
-         <div class="mx-1">
-           <%= link_to "管理者ログイン",  new_admin_session_path %>
-         </div>
-         <div class="mx-1">
-           <%= link_to "(管理)商品新規登録", new_admin_item_path %>
-         </div>
-         <div class="mx-1">
-           <%= link_to "(管理)商品一覧",  admin_items_path %>
-         </div>
-         <div class="mx-1">
-           <%= link_to "(管理)ジャンル一覧",  admin_genres_path %>
-         </div>
-         <div class="mx-1">
-           <%= link_to "(管理)会員一覧", admin_customers_path %>
-         </div>
-         <div class="mx-1">
-           <%= link_to "(管理)注文履歴一覧", admin_path %>
-         </div>
+            </div>
+
+         <% elsif customer_signed_in? %>
+            <div class="mx-3">
+         <%= link_to "マイページ", customers_mypage_path %>
+            </div>
+            <div class="mx-3">
+         <%= link_to "商品一覧", items_path %>
+            </div>
+            <div class="mx-3">
+         <%= link_to "カート", cart_items_path %>
+            </div>
+            <div class="mx-3">
+         <%= link_to "ログアウト", destroy_customer_session_path, method: :delete %>
+            </div>
 
          <% else %>
+              <ul class="navbar-nav">
+          <li>
+           <div class="mx-3">
+            <%= link_to "About", about_path %>
+           </div>
+          </li>
          <li>
-         <div class="mx-1">
+           <div class="mx-3">
+           <%= link_to "商品一覧", items_path %>
+         </div>
+         </li>
+         <li>
+         <div class="mx-3">
+           <%= link_to "新規登録", new_customer_registration_path %>
+         </div>
+         </li>
+         <li>
+         <div class="mx-3">
+           <%= link_to "ログイン", new_customer_session_path %>
+         </div>
+         </li>
+
+         <li>
+         <div class="mx-3">
            <%= link_to "管理者ログイン",  new_admin_session_path %>
          </div>
          </li>
-         <li>
-         <div class="mx-1">
-           <%= link_to "会員新規登録", new_customer_registration_path %>
-         </div>
-         </li>
-          <li>
-         <div class="mx-1">
-           <%= link_to "会員ログイン", new_customer_session_path %>
-         </div>
-         </li>
-         <li>
-         <div class="mx-1">
-           <%= link_to "会員新規登録", new_customer_registration_path %>
-         </div>
-         </li>
-         <li>
-         <div class="mx-1">
-           <%= link_to "About", about_path %>
-         </div>
-         </li>
-         <% if customer_signed_in? %>
-        <%= link_to "ログアウト", destroy_customer_session_path, method: :delete %><br>
-        <%= link_to "マイページ", customers_mypage_path %>
-      　<%= link_to "配送先一覧", addresses_path %>
-        <%= link_to "(会員)商品一覧", items_path %>
-        <%= link_to "(会員)カート内商品一覧", cart_items_path %>
-        <%= link_to "(会員)注文情報入力", new_order_path %>
-        <%= link_to "(会員)注文履歴一覧", orders_path %>
-         <% else %>
+           </ul>
+
+
        <% end %>
-       <% end %>
-      </div>
     </div>
 </nav>
 </header>

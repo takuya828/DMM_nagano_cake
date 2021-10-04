@@ -1,5 +1,7 @@
 class CartItemsController < ApplicationController
 
+    before_action :authenticate_customer!
+
   def new
   end
 
@@ -26,7 +28,7 @@ class CartItemsController < ApplicationController
     @cart_item.customer_id = current_customer.id
      if @cart_item.save!
       flash[:success] = "You have created cart_item successfully."
-      redirect_to items_path
+      redirect_to cart_items_path
      else
       flash[:danger] = "error"
       redirect_to items_path

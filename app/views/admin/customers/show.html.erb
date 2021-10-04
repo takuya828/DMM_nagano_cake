@@ -10,6 +10,6 @@
 <p>住所 <%= @customer.address %></p>
 <p>電話番号 <%= @customer.telephone_number %></p>
 <p>メールアドレス <%= @customer.email %></p>
-<p>会員ステータス </p>
+<p>会員ステータス <%= @customer.is_active_i18n %></p>
 
 <%= link_to "編集する", edit_admin_customer_path(@customer.id) %>　　　<%= link_to "注文履歴一覧を見る", admin_path %>
