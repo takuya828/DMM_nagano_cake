@@ -4,11 +4,8 @@ ja:
       payment_type:
         credit_card: 'クレジットカード'
         transfer: '銀行振込'
-
-
-ja:
-  enums:
     customer:
       is_active:
         yuukou: '有効'
         mukou: '退会'
+

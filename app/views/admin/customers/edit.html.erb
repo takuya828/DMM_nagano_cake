@@ -15,9 +15,9 @@
   <h4>メールアドレス</h4>
   <%= f.text_field :email %><br>
   <h4>会員ステータス</h4>
-  <%= f.radio_button :is_active, :true %>
+  <%= f.radio_button :is_active, :yuukou, checked: true %>
   <%= f.label :is_active, Customer.is_actives_i18n[:yuukou] %>
-  <%= f.radio_button :is_active, :false %>
+  <%= f.radio_button :is_active, :mukou %>
   <%= f.label :is_active, Customer.is_actives_i18n[:mukou]%>
   <br>
 

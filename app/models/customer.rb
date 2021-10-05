@@ -2,6 +2,10 @@ class Customer < ApplicationRecord
 
 enum is_active: { mukou: false, yuukou: true }
 
+    def active_for_authentication?
+        super && (self.is_active === "yuukou")
+    end
+
 
    def full_address
     '〒' + postal_code + ' ' + address + ' ' + name

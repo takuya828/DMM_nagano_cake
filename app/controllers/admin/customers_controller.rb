@@ -14,17 +14,16 @@ class Admin::CustomersController < ApplicationController
 
   def update
     @customer = Customer.find(params[:id])
-     if @customer.update(customer_params)
+    if @customer.update(customer_params)
        flash[:success] = "You have updated info successfully."
        redirect_to  admin_customer_path(@customer.id)
-     if @customer.update(is_active:false)
-       flash[:success] = "You have updated info successfully."
-       redirect_to  admin_customer_path(@customer.id)
-     else
+    elsif @customer.update(is_active: false)
+       flash[:success] = "You have updated status successfully."
+      redirect_to admin_customer_path(@customer.id)
+    else
        flash[:danger] = "error"
        redirect_to admin_customer_path(@customer.id)
-     end
-     end
+    end
   end
 
 private
