@@ -1,13 +1,35 @@
-<h1>注文履歴一覧(管理)</h1>
-<% @orders.each do |order| %>
-    注文日時<%= link_to order.created_at.strftime("%Y-%m-%d%H:%M"), admin_order_path(order) %><br>
-    購入者<%= order.customer.first_name + order.customer.last_name %><br>
-    <% @sum = 0 %>
+<div class="container">
+  <div class="mt-3 mx-3">
+<h4>注文履歴一覧</h4>
+
+    <div class="row">
+      <div class="col">
+        <div class="mt-3">
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">購入日時</th>
+      <th scope="col">購入者</th>
+      <th scope="col">注文個数</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <% @orders.each do |order| %>
+      <td><%= link_to order.created_at.strftime("%Y-%m-%d-%H:%M"), admin_order_path(order) %></td>
+      <td><%= order.customer.first_name + order.customer.last_name %></td>
+      <td><% @sum = 0 %>
     <% order.order_items.each do |order_item| %>
         <% order_item.amount %>
         <% @sum += order_item.amount %>
     <% end %>
-    注文個数　　<%= @sum %>
-    <br><br>
+    　　<%= @sum %></td>
+    </tr>
+    <% end %>
+    </tbody>
+    </table>
 
-<% end %>
+    </div>
+    </div>
+    </div>

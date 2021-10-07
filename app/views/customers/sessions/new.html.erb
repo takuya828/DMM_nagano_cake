@@ -1,26 +1,22 @@
 <%= flash[:error] %>
 
-<h2>会員ログイン画面</h2>
+<main>
+  <div class="container">
+    <div class="ml-3 mt-3">
+      <h1>ログイン</h1>
+    </div>
 
-<h3>会員の方はこちらからログイン</h3>
-
+<div class="px-5 pt-3">
+<p>会員の方はこちらからログイン</p>
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :メールアドレス %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+  <div class="field">　　　<%= f.label :メールアドレス %>　　　　　<%= f.email_field :email, autofocus: true, autocomplete: "email", size:"40" %>
   </div>
-
-  <div class="field">
-    <%= f.label :パスワード %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "ログイン" %>
+  <div class="field">　　　<%= f.label :パスワード %>　　　　　　　<%= f.password_field :password, autocomplete: "current-password", size:"40" %>
+  </div><br>
+  <div class="actions">　　　　　　　　　　　　　　　<%= f.submit "ログイン", class:"btn btn-success" %>
   </div>
 <% end %>
 
-
-<p>会員登録がお済みでない方
-<%= link_to "こちら", new_customer_registration_path
-%>から新規登録を行ってください。</p>
+<br><br>
+<p>会員登録がお済みでない方</p>
+<p>　　　　　　<%= link_to "こちら", new_customer_registration_path %>から新規登録を行ってください。</p>
