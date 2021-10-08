@@ -1,21 +1,62 @@
+<div class="container">
+  <div class="mt-3 mx-2">
 <h1>注文情報確認</h1>
 
+    <div class="row">
+      <div class="col-md-8">
+        <div class="mt-3">
 
-<% @cart_items.each do |cart_item| %>
-<%= attachment_image_tag(cart_item.item, :image, :fill, 50, 50, format: 'jpeg', fallback: "no_image.jpg") %>
-<p>商品名　<%= cart_item.item.name %></p>
-<p>単価　<%= cart_item.item.add_tax_price.to_s(:delimited) %>　</p>
-<p>数量　<%= cart_item.amount %></p>
-<p>小計  <%= ((cart_item.item.price * 1.1).floor * cart_item.amount).to_s(:delimited) %></p><br><br>
- <% end %>
 
-<h4>送料　<%= @postage %></h4>
-<h3>商品合計　<%= @total.round.to_s(:delimited) %></h3>
-<h2>請求金額 <%= (@total + @postage).to_s(:delimited) %></h2>
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th scope="col">商品名</th>
+      <th scope="col">単価（税込）</th>
+      <th scope="col">数量</th>
+      <th scope="col">小計</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+        <% @cart_items.each do |cart_item| %>
+      <th scope="row"><%= attachment_image_tag(cart_item.item, :image, :fill, 30, 20, format: 'jpeg', fallback: "no_image.jpg") %>　<%= cart_item.item.name %></th>
+      <td><%= cart_item.item.add_tax_price.to_s(:delimited) %></td>
+      <td><%= cart_item.amount %></td>
+      <td><%= ((cart_item.item.price * 1.1).floor * cart_item.amount).to_s(:delimited) %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+</div>
+</div>
 
-<h4>支払い方法 <%= @order.payment_type_i18n %></h4>
-<h4>お届け先 〒<%= @order.postal_code %>　<%= @order.address %><br>
-<%= @order.name %></h4>
+<div class="col-md-4">
+    <div class="mt-3">
+        <table class="table">
+  <tr>
+      <th>送料</th>
+      <td><%= @postage %></td>
+  </tr>
+  <tr>
+      <th>商品合計</th>
+      <td><%= @total.round.to_s(:delimited) %></td>
+  </tr>
+  <tr>
+      <th>請求金額</th>
+      <td><%= (@total + @postage).to_s(:delimited) %></td>
+  </tr>
+         </table>
+</div>
+</div>
+</div>
+
+<div class="mt-3">
+<p><strong>支払方法</strong>　　<%= @order.payment_type_i18n %></p>
+</div>
+<div class="mt-3">
+<p><strong>お届け先</strong>　　〒<%= @order.postal_code %>　<%= @order.address %><br>
+　　　　　　<%= @order.name %></p>
+</div>
 
 <%= form_with model:@order, url: orders_path, local:true do |f| %>
 <%= f.hidden_field :order_id %>
@@ -26,7 +67,10 @@
 <%= f.hidden_field :name %>
 <%= f.hidden_field :payment_type %>
 
-
-<%= f.submit '注文を確定する' %>
+<div class="text-center">
+<%= f.submit '注文を確定する', class:"btn btn-outline-success" %>
+</div>
 
 <% end %>
+</div>
+</div>
