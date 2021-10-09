@@ -15,6 +15,8 @@ class AddressesController < ApplicationController
      if @address.save
       flash[:success] = "You have created address successfully."
       redirect_to addresses_path
+     else
+      redirect_to addresses_path
      end
   end
 
