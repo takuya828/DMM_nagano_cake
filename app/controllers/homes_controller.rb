@@ -1,7 +1,7 @@
 class HomesController < ApplicationController
 
   def top
-    @items = Item.all
+    @items = Item.all.limit(4).reverse_order
   end
 
   def about

@@ -17,7 +17,7 @@
 <% @items.each do |item| %>
  <div class="col">
   <div>
-  <%= attachment_image_tag item, :image, :fill, 200, 150, format: 'jpeg', fallback: "no_image.jpg" %>
+  <%= link_to (attachment_image_tag item, :image, :fill, 200, 150, format: 'jpeg', fallback: "no_image.jpg"), item_path(item) %>
   <p><%= link_to item.name, item_path(item) %></p>
   <p> ¥<%= ((item.price * 1.1).floor).to_s(:delimited) %></p>
   </div>

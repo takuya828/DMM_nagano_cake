@@ -1,4 +1,5 @@
 class Admin::CustomersController < ApplicationController
+    before_action :authenticate_admin!
 
   def index
     @customers = Customer.all
@@ -17,7 +18,7 @@ class Admin::CustomersController < ApplicationController
     if @customer.update(customer_params)
        flash[:success] = "You have updated info successfully."
        redirect_to  admin_customer_path(@customer.id)
-    elsif @customer.update(is_active: false)
+    elsif @customer.update(is_active: true)
        flash[:success] = "You have updated status successfully."
       redirect_to admin_customer_path(@customer.id)
     else

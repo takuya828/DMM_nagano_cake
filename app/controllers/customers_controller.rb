@@ -15,7 +15,7 @@ end
 
  def quit
   @customer = Customer.find(params[:id])
-  @customer.update(is_active: false)
+  @customer.update(is_active: true)
   reset_session
   flash[:notice] = "退会処理を完了致しました。"
   redirect_to root_path

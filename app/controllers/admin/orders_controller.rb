@@ -1,4 +1,5 @@
 class Admin::OrdersController < ApplicationController
+      before_action :authenticate_admin!
 
   def show
     @order = Order.find(params[:id])
@@ -10,7 +11,7 @@ class Admin::OrdersController < ApplicationController
 
   private
     def order_item_params
-		  params.require(:order_item)
+		 params.require(:order_item)
 	  end
 
 end

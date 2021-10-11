@@ -1,6 +1,6 @@
 class Customer < ApplicationRecord
 
-enum is_active: { mukou: false, yuukou: true }
+enum is_active: { mukou: true, yuukou: false }
 
     def active_for_authentication?
         super && (self.is_active === "yuukou")
