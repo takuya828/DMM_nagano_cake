@@ -53,4 +53,4 @@ class CartItemsController < ApplicationController
     params.require(:cart_item).permit(:amount, :item_id)
    end
 
- end
+end

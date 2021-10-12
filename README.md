@@ -1,24 +1,23 @@
-# README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+<h2>名前</h2>
+<strong>ながのCAKE　ECサイト</strong>
 
-Things you may want to cover:
+<h2>概要</h2>
+<p>長野県にある小さな洋菓子店「ながのCAKE」の商品を通販するためのECサイト開発。</p>
 
-* Ruby version
+<h2>説明</h2>
+<p>管理者ページ…会員一覧、注文履歴一覧、商品一覧、ジャンル一覧が閲覧可能。<br>
+会員…会員ステータスの変更も行え、強制的にログインできなくすることもできる。<br>
+ジャンル…新しいジャンルの追加<br>
+商品…新しい商品の追加、画像や価格の設定が行える。</p><br><br>
+<p>会員ページ…商品をカートに追加でき、カートにある商品を決済することができる。登録された配送先に送るのはもちろん、新しく配送先を設定して決済することも可能。
+クレジットカードか現金か選ぶことができる。カート内商品は個数を変更することができる。</p>
 
-* System dependencies
+<h2>開発環境</h2>
+Ruby on Rails
 
-* Configuration
+<h2>開発者</h2>
+田中　択哉
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+<h2>作成機関</h2>
+2021/09/13　～　2021/10/12

@@ -3,20 +3,18 @@
   <div class="container">
     <%= flash[:danger] %>
 　　<%= flash[:success] %>
-    <div class="ml-3 mt-3">
-      <h1>商品新規登録</h1>
-    </div>
-
-<div class="px-5 pt-3">
-<%= form_with model: [:admin, @item], local:true do |f| %>
-  <p>商品画像　　　　　　　<%= f.attachment_field :image %></p>
-  <p>商品名　　　　　　　　<%= f.text_field :name %></p>
-  <p>商品説明 　　　　　　　<%= f.text_area :introduction %></p>
-  <p><%= f.label :ジャンル %>　　　　　　　<%= f.collection_select :genre_id, Genre.all, :id, :name, :prompt => "--選択してください--" %></p>
-  <p>税抜価格 　　　　　　　<%= f.text_field :price %>円</p>
+      <div class="ml-3 mt-3">
+        <h1>商品新規登録</h1>
+      </div>
+    <div class="px-5 pt-3">
+      <%= form_with model: [:admin, @item], local:true do |f| %>
+        <p>商品画像　　　　　　　<%= f.attachment_field :image %></p>
+        <p>商品名　　　　　　　　<%= f.text_field :name %></p>
+        <p>商品説明 　　　　　　　<%= f.text_area :introduction %></p>
+        <p><%= f.label :ジャンル %>　　　　　　　<%= f.collection_select :genre_id, Genre.all, :id, :name, :prompt => "--選択してください--" %></p>
+        <p>税抜価格 　　　　　　　<%= f.text_field :price %>円</p>
   　　　　　　　　　　　　　　　　　　    　　　　　　　　<%= f.submit '新規登録', class: "btn btn-success" %>
   　</div>
   </div>
-
-<% end %>
+      <% end %>
 </div>

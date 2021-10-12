@@ -4,31 +4,31 @@
   <div class="container">
    <div class="row">
     <div class="mx-auto mt-5">
-<h2>ようこそ、ながのCAKEへ！<br>
-このサイトは、ケーキ販売のECサイトになります。<br>
-会員でない方も商品の閲覧はできますが、<br>
-購入には会員登録が必要になります。
-</h2>
-</div>
-</div><br>
- <div class="mx-8 mt-3">
-<h1><strong>新着商品</strong></h1>
-<div class="row">
-<% @items.each do |item| %>
- <div class="col">
-  <div>
-  <%= link_to (attachment_image_tag item, :image, :fill, 200, 150, format: 'jpeg', fallback: "no_image.jpg"), item_path(item) %>
-  <p><%= link_to item.name, item_path(item) %></p>
-  <p> ¥<%= ((item.price * 1.1).floor).to_s(:delimited) %></p>
+     <h2>ようこそ、ながのCAKEへ！<br>
+     このサイトは、ケーキ販売のECサイトになります。<br>
+     会員でない方も商品の閲覧はできますが、<br>
+     購入には会員登録が必要になります。
+     </h2>
+    </div>
+   </div><br>
+   <div class="mx-8 mt-3">
+   <h1><strong>新着商品</strong></h1>
+    <div class="row">
+     <% @items.each do |item| %>
+     <div class="col">
+     <div>
+     <%= link_to (attachment_image_tag item, :image, :fill, 200, 150, format: 'jpeg', fallback: "no_image.jpg"), item_path(item) %>
+     <p><%= link_to item.name, item_path(item) %></p>
+     <p> ¥<%= ((item.price * 1.1).floor).to_s(:delimited) %></p>
+     </div>
+     </div><br><br>
+     <% end %>
+    </div>
+   </div>
   </div>
-  </div><br><br>
-<% end %>
-</div>
-</div>
-</div>
-<div class="text-right">
- <div class="mr-5">
- <%= link_to "全ての商品を見る >",  items_path %>
- </div>
- </div>
+  <div class="text-right">
+   <div class="mr-5">
+    <%= link_to "全ての商品を見る >",  items_path %>
+   </div>
+  </div>
 </main>
