@@ -6,8 +6,7 @@
 <p>長野県にある小さな洋菓子店「ながのCAKE」の商品を通販するためのECサイト開発。</p>
 
 <h2>ER図</h2>
-[ER.pdf](https://github.com/takuya828/DMM_nagano_cake/files/7327279/ER.pdf)
-
+[ER図.pdf](https://github.com/takuya828/DMM_nagano_cake/files/7894172/dwcpro_naganocake_ER.1.pdf)
 
 <h2>説明</h2>
 [管理者ページ]…会員一覧、注文履歴一覧、商品一覧、ジャンル一覧が閲覧可能。
